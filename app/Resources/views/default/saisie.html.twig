@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RnGiver - Add a card{% endblock %}
+
+{% block body %}
+            {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-sm-2">
+                        {{ form_row(form.type) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.classe) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.name) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.race) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.cost) }}
+                    </div>
+                    <div class="col-sm-1">
+                        {{ form_row(form.attack) }}
+                    </div>
+                    <div class="col-sm-1">
+                        {{ form_row(form.health) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        {{ form_row(form.taunt) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.divineShield) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.charge) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.battlecry) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.deathrattle) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.inspire) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        {{ form_row(form.joust) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.stealth) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.windfury) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.combo, {'attr': {'class': 'comboClass'}, 'label_attr': {'class': 'comboClass'}}) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.choose, {'attr': {'class': 'chooseClass'}, 'label_attr': {'class': 'chooseClass'}}) }}
+                    </div>
+                    <div class="col-sm-2">
+                        {{ form_row(form.discard, {'attr': {'class': 'discardClass'}, 'label_attr': {'class': 'discardClass'}}) }}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        {{ form_row(form.spellDamage) }}
+                    </div>
+                    <div class="col-sm-1">
+                        {{ form_row(form.enrage) }}
+                    </div>
+                    <div class="col-sm-1">
+                        {{ form_row(form.overload) }}
+                    </div>
+                    <div class="col-sm-4">
+                        {{ form_row(form.extension) }}
+                    </div>
+                    <div class="col-sm-4">
+                        {{ form_row(form.rarity) }}
+                    </div>
+                </div>
+            <input type="submit" value="Create"
+                   class="btn btn-default pull-right" />
+            {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            if($('#card_classe option:selected').text() == ''){
+                $('#card_overload').hide();
+                $(".form-group label[for='card_overload']").hide();
+                $('#card_enrage').hide();
+                $(".form-group label[for='card_enrage']").hide();
+                $('.comboClass').hide();
+                $('.chooseClass').hide();
+                $('.discardClass').hide();
+            }
+            $('#card_classe').change(function() {
+                if($('#card_classe option:selected').text() == 'Rogue') {
+                    $('.comboClass').show();
+                }else {
+                    $('.comboClass').hide();
+                }
+                if($('#card_classe option:selected').text() == 'Druid') {
+                    $('.chooseClass').show();
+                }else {
+                    $('.chooseClass').hide();
+                }
+                if($('#card_classe option:selected').text() == 'Warlock') {
+                    $('.discardClass').show();
+                }else {
+                    $('.discardClass').hide();
+                }
+                if($('#card_classe option:selected').text() == 'Warrior') {
+                    $('#card_enrage').show();
+                    $(".form-group label[for='card_enrage']").show();
+                }else {
+                    $('#card_enrage').hide();
+                    $(".form-group label[for='card_enrage']").hide();
+                }
+                if($('#card_classe option:selected').text() == 'Shaman') {
+                    $('#card_overload').show();
+                    $(".form-group label[for='card_overload']").show();
+                }else {
+                    $('#card_overload').hide();
+                    $(".form-group label[for='card_overload']").hide();
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

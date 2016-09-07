@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RnGiver - List of cards{% endblock %}
+
+{% block body %}
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Race</th>
+                        <th>Rarity</th>
+                        <th>Extension</th>
+                        <th>Cost</th>
+                        <th>Attack</th>
+                        <th>Health</th>
+                        <th>Taunt</th>
+                        <th>Divine Shield</th>
+                        <th>Charge</th>
+                        <th>Battlecry</th>
+                        <th>Deathrattle</th>
+                        <th>Inspire</th>
+                        <th>Joust</th>
+                        <th>Spell Damage</th>
+                        <!--<th>Combo</th>
+                        <th>Enrage</th>
+                        <th>Overload</th>
+                        <th>Choose</th>
+                        <th>Discard</th>-->
+                    </tr>
+                    {% for card in cards %}
+                        <tr>
+                            <td>{{ card.name }}</td>
+                            <td>{% if card.classe is not null %}
+                                    {{ card.classe.name }}
+                                {% endif %}
+                            </td>
+                            <td>{% if card.race is not null %}
+                                    {{ card.race }}
+                                {% endif %}
+                            </td>
+                            <td>{% if card.rarity is not null %}
+                                    {{ card.rarity.name }}
+                                {% endif %}
+                            </td>
+                            <td>{% if card.extension is not null %}
+                                    {{ card.extension.name }}
+                                {% endif %}
+                            </td>
+                            <td>{{ card.cost }}</td>
+                            <td>{{ card.attack }}</td>
+                            <td>{{ card.health }}</td>
+                            <td>{% if card.taunt == true %}
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                {% endif %}
+                            </td>
+                            <td>{% if card.divineShield == true %}
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                {% endif %}
+                            </td>
+                            <td>{% if card.charge == true %}
+                                <span class="glyphicon glyphicon-ok"></span>
+                                {% endif %}
+                            </td>
+                            <td>{% if card.battlecry == true %}
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                {% endif %}
+                            </td>
+                            <td>{% if card.deathrattle == true %}
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if card.inspire == true %}
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if card.joust == true %}
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if card.spellDamage == true %}
+                                    <span class="glyphicon glyphicon-ok"></span>
+                                {% endif %}
+                            </td>
+                            {#<td>
+                                {% if card.classe.id == 2 %}
+                                    {% if card.combo == true %}
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if card.classe.id == 10 %}
+                                    {% if card.enrage != 0 %}
+                                        {{ card.enrage }}
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                {% endif %}
+                            </td>
+                            <td>{% if card.classe.id == 8 %}
+                                    {% if card.overload != 0 %}
+                                        {{ card.overload }}
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                {% endif %}
+                            </td>
+                            <td>{% if card.classe.id == 9 %}
+                                    {% if card.choose == true %}
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                {% endif %}
+                            </td>
+                            <td>{% if card.classe.id == 5 %}
+                                    {% if card.discard == true %}
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    {% else %}
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                {% endif %}
+                            </td>#}
+                        </tr>
+                    {% endfor %}
+                </table>
+{% endblock %}
